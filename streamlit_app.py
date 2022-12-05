@@ -1,5 +1,4 @@
 import streamlit
-import snowflake.connector
 streamlit.title('My Parents New Healthy Dinner')
 streamlit.header('Breakfast Favorites')
 streamlit.text('🥣 Omega 3 & bluberry Oatmeal')
@@ -25,3 +24,4 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_c
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # seperated values in row col format
 streamlit.dataframe(fruityvice_normalized)
+import snowflake.connector
