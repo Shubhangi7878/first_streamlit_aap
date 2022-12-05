@@ -31,3 +31,11 @@ my_cur.execute("select * from PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST")
 my_data_rows = my_cur.fetchall()
 streamlit.header("The fruit food list contains:")
 streamlit.dataframe(my_data_rows)
+
+import requests
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+#streamlit.text(fruityvice_response.json())
+# seperated values in row col format
+fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+# seperated values in row col format
+streamlit.dataframe(fruityvice_normalized)
