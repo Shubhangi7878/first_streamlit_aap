@@ -1,8 +1,9 @@
 import streamlit
-import pandas
-#import urllib.error import URLError
+#import pandas
+#import requests
+import snowflake.connector
+from urllib.error import URLError
 
-import requests
 
 streamlit.title('My Parents New Healthy Dinner')
 streamlit.header('Breakfast Favorites')
@@ -30,8 +31,8 @@ fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # seperated values in row col format
 streamlit.dataframe(fruityvice_normalized)
 
-#streamlit.stop()
-import snowflake.connector
+streamlit.stop()
+
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("select * from PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST")
